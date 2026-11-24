@@ -43,7 +43,7 @@ def main():
                 expenses=expenses,
                 amount=args.amount,
                 category=args.category,
-                descriptuon=args.description,
+                description=args.description,
                 date_text=args.date,
             )
             save_expenses(DATA_FILE, expenses)

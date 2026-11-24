@@ -81,7 +81,7 @@ def get_summary(expenses, category=None):
     }
 
 def delete_expense(expenses, expense_id):
-    for index, item in enumerate(expenses)
+    for index, item in enumerate(expenses):
         if item["id"] == expense_id:
             return expenses.pop(index)
 
