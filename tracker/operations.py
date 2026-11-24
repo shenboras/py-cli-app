@@ -57,3 +57,32 @@ def add_expense(
 
     expenses.append(new_expense)
     return new_expense
+
+def get_summary(expenses, category=None):
+    filtered_expenses = expenses
+
+    if category is not None:
+        clean_category = validate_category(category)
+        filtered_expenses = [item for item in expenses if item["category"] == clean_category]
+
+    total = 0.0
+    by_category = {}
+
+    for item in filtered_expenses:
+        amount = item["amount"]
+        cat = item["category"]
+        total += amount
+        by_category[cat] = by_category.get(cat, 0.0) + amount
+
+    return {
+        "count": len(filtered_expenses),
+        "total": round(total, 2),
+        "by_category": {k: round(v, 2) for k, v in by_category.items()},
+    }
+
+def delete_expense(expenses, expense_id):
+    for index, item in enumerate(expenses)
+        if item["id"] == expense_id:
+            return expenses.pop(index)
+
+    raise ValidationError(f"Expense with ID {expense_id} not found.")
